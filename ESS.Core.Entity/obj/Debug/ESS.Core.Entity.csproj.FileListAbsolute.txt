@@ -1,0 +1,12 @@
+J:\CS Fest\VS2017\ESS\ESS.Core.Entity\bin\Debug\ESS.Core.Entity.dll.config
+J:\CS Fest\VS2017\ESS\ESS.Core.Entity\bin\Debug\ESS.Core.Entity.dll
+J:\CS Fest\VS2017\ESS\ESS.Core.Entity\bin\Debug\ESS.Core.Entity.pdb
+J:\CS Fest\VS2017\ESS\ESS.Core.Entity\bin\Debug\EntityFramework.dll
+J:\CS Fest\VS2017\ESS\ESS.Core.Entity\bin\Debug\EntityFramework.SqlServer.dll
+J:\CS Fest\VS2017\ESS\ESS.Core.Entity\bin\Debug\EntityFramework.xml
+J:\CS Fest\VS2017\ESS\ESS.Core.Entity\bin\Debug\EntityFramework.SqlServer.xml
+J:\CS Fest\VS2017\ESS\ESS.Core.Entity\obj\Debug\ESS.Core.Entity.csprojAssemblyReference.cache
+J:\CS Fest\VS2017\ESS\ESS.Core.Entity\obj\Debug\ESS.Core.Entity.csproj.CoreCompileInputs.cache
+J:\CS Fest\VS2017\ESS\ESS.Core.Entity\obj\Debug\ESS.Core.Entity.csproj.CopyComplete
+J:\CS Fest\VS2017\ESS\ESS.Core.Entity\obj\Debug\ESS.Core.Entity.dll
+J:\CS Fest\VS2017\ESS\ESS.Core.Entity\obj\Debug\ESS.Core.Entity.pdb

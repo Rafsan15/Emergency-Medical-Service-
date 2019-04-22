@@ -1,0 +1,190 @@
+﻿@using App.Framework
+@model ESS.Web.ViewModel.ListViewModel
+
+@{
+    if (ViewBag.Entry.Equals("Admin"))
+    {
+        Layout = "~/Views/Shared/_AdminLayoutPage.cshtml";
+    }
+    else if (ViewBag.Entry.Equals("Employee"))
+    {
+        Layout = "~/Views/Shared/_EmployeeLayoutPage.cshtml";
+    }
+    ViewBag.Title = "RequestDetails";
+}
+<head>
+    <title></title>
+    <link href="~/Content/Flatly.css" rel="stylesheet" />
+</head>
+<body>
+    @if (ViewBag.count == 1)
+    {
+        <div class="alert alert-dismissible alert-success">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <strong>Well done!</strong> One Volunteer <a href="#" class="alert-link">is successfully added</a>.
+        </div>
+
+    }
+
+
+    <h2>RequestDetails</h2>
+    <br />
+    <br />
+    <div class="container">
+        <div class="col-lg-3">
+            <a href="@Url.Action("RequestDetailsDoctor", "Request")/@Model.Request.RequestId " class="btn btn-info btn-lg btn-block">Assign Doctor</a>
+        </div>
+        <div class="col-lg-3">
+            <a href=" @Url.Action("ApproveRequest", "Request")/@Model.Request.RequestId" class="btn btn-success btn-lg btn-block">Approve</a>
+        </div>
+        <div class="col-lg-3">
+            <a href="@Url.Action("DiscardRequest", "Request")/@Model.Request.RequestId " class="btn btn-danger btn-lg btn-block">Discard</a>
+        </div>
+        <div class="col-lg-3">
+            <a href="@Url.Action("GetAllRequest", "Request")/@Model.Request.RequestId " class="btn btn-default btn-lg btn-block">Cancel</a>
+        </div>
+
+    </div>
+    <br />
+    <div class="container">
+        <div class="col-lg-10">
+            <div class="well">
+                <label class="" style="font-size: 25px">Request Id :@Model.Request.RequestId </label>
+
+                <br />
+                <label class="" style="font-size: 25px">Name : @Model.Request.Name </label>
+                <br />
+                <label class="" style="font-size: 25px">Description : @Model.Request.Description </label>
+                <br />
+                <label class="" style="font-size: 25px">Location : @Model.Request.Location </label>
+                <br />
+                <label class="" style="font-size: 25px">Location : @Model.Request.OptionalLocation </label>
+                <br />
+
+                <label class="" style="font-size: 25px">Phone Number : @Model.Request.Phone </label>
+                <br />
+                <label class="" style="font-size: 25px">Request Time : @Model.Request.RequesTime </label>
+                <br />
+                <br />
+                <br />
+            </div>
+        </div>
+        <div class="col-lg-2"></div>
+
+    </div>
+    <h1>Volunteer List</h1>
+    <br />
+    <br />
+    @if (ViewBag.hasvolunteer == 1)
+    {
+        <h1>Already Volunteer Added</h1>
+        <div class="container">
+            <table class="table table-striped table-hover ">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Current Location</th>
+                        <th>Phone</th>
+                        <th>Remove Assign Voluenteer</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var p in Model.UserVolunteerViewModels)
+                    {
+                        <tr class="info">
+                            <td>@p.UserId</td>
+                            <td>@p.Name</td>
+                            <td>@p.CurrentLocation</td>
+                            <td>@p.Phone</td>
+                            <td>
+                                <a href="@Url.Action("RemoveAssignVolunteer", "Request")/?requestId=@Model.Request.RequestId&userId=@p.UserId" class="btn btn-success" value="Update" type="button">
+                                    Remove  Assign
+                                </a>
+                            </td>
+                        </tr>
+                    }
+
+
+
+                </tbody>
+            </table>
+        </div>
+
+        <h1>Already Volunteer Doctor Added</h1>
+        <div class="container">
+            <table class="table table-striped table-hover ">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Current Location</th>
+                        <th>Phone</th>
+                        <th>Special Domain</th>
+                        <th>Remove Assign Doctor</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var p in Model.UserDoctorViewModel)
+                    {
+                        <tr class="info">
+                            <td>@p.UserId</td>
+                            <td>@p.Name</td>
+                            <td>@p.Name</td>
+                            <td>@p.CurrentLocation</td>
+                            <td>@p.Phone</td>
+                            <td>@p.SpecialDomain</td>
+                            <td>
+                                <a href="@Url.Action("RemoveAssignVolunteerDoctor", "Request")/?requestId=@Model.Request.RequestId&userId=@p.UserId" class="btn btn-success" value="Update" type="button">
+                                    Remove  Assign
+                                </a>
+                            </td>
+                        </tr>
+                    }
+
+
+
+                </tbody>
+            </table>
+        </div>
+    }
+    <br />
+    <br />
+
+    <div class="container">
+        <h1>Want to Add More </h1>
+
+        <table class="table table-striped table-hover ">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Is Active</th>
+                    <th>Assign Voluenteer</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var p in Model.Users)
+                {
+                    <tr class="info">
+                        <td>@p.UserId</td>
+                        <td>@p.Name</td>
+                        <td>@p.Email</td>
+                        <td>@p.Phone</td>
+                        <td>Active</td>
+                        <td>
+                            <a href="@Url.Action("AssignedRequests", "Request")/?requestId=@Model.Request.RequestId&volunteerId=@p.UserId&empId=@HttpUtil.CurrentUser.UserId" class="btn btn-success" value="Update" type="button">
+                                Assign
+                            </a>
+                        </td>
+                    </tr>
+                }
+
+
+
+            </tbody>
+        </table>
+    </div>
+</body>

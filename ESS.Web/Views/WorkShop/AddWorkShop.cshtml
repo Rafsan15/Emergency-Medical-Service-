@@ -1,0 +1,151 @@
+﻿
+@{
+    ViewBag.Title = "AddWorkShop";
+    Layout = "~/Views/Shared/_AdminLayoutPage.cshtml";
+}
+
+<html>
+<head>
+    <title></title>
+    <script src="~/Scripts/Angular JS/Angular.js"></script>
+    <link href="~/Content/Flatly.css" rel="stylesheet" />
+    <script src="~/Scripts/Angular JS/FromValidation.js"></script>
+</head>
+
+<body ng-app="validationmodule" ng-controller="FormController">
+
+
+
+    <fieldset>
+        <div class="container">
+            <div class="col-lg-3"></div>
+            <div class="col-lg-6">
+                <div class="row">
+                    <br />
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            <h1 style="font-size: 30px" class="panel-title" align="center">Create A WorkShop</h1>
+                        </div>
+                        <div class="panel-body">
+                            @using (Html.BeginForm("AddWorkShop", "WorkShop", FormMethod.Post, new { name = "signupform" }))
+                            {
+                                <form name="signupform">
+
+                                    <div class="form-group">
+                                        <label for="NameId" class="col-lg-3 control-label">Name</label>
+                                        <div class="col-lg-9">
+                                            <input type="text" name="Name" class="form-control" id="NameId" placeholder=" Name "
+                                                   ng-model="user.Name"
+                                                   ng-required="true">
+                                            <p class="field-validation-error" ng-show="signupform.Name.$invalid && signupform.Name.$touched " style="color: red">Fill out your Name</p>
+                                        </div>
+                                    </div>
+
+                                   
+
+                                    <div class="form-group">
+                                        <label for="Venueid" class="col-lg-3 control-label">Venue</label>
+                                        <div class="col-lg-9">
+                                            <input type="text" name="Venue" class="form-control" id="Venueid" placeholder="Venue"
+                                                   ng-model="user.Venue"
+                                                   ng-required="true">
+                                            <p class="field-validation-error" ng-show="signupform.Venue.$invalid && signupform.Venue.$touched " style="color: red">Fill out  Venue</p>
+
+
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label for="Detailsid" class="col-lg-3 control-label">Details</label>
+                                        <div class="col-lg-9">
+                                            <input type="text" name="Details" class="form-control" id="Detailsid" placeholder="Details"
+                                                   ng-model="user.Details"
+                                                   ng-required="true">
+                                            <p class="field-validation-error" ng-show="signupform.Details.$invalid && signupform.Details.$touched " style="color: red">Fill out  Details</p>
+
+
+                                        </div>
+                                    </div>
+
+
+
+                                    <div class="form-group">
+                                        <label for="PhoneId" class="col-lg-3 control-label">Phone Number</label>
+                                        <div class="col-lg-9">
+                                            <input type="number" name="Phone" class="form-control" id="PhoneId" placeholder="Phone Number"
+                                                   ng-model="user.PhoneNumber"
+                                                   ng-minlength="11"
+                                                   ng-maxlength="11"
+                                                   ng-required="true">
+
+                                            <p class="field-validation-error" ng-show="signupform.Phone.$invalid && signupform.Phone.$touched " style="color: red">Fill out your Correct Phone Number</p>
+
+                                        </div>
+                                    </div>
+
+                                    <div>
+                                        <div class="form-group">
+                                            <label for="WorkShopDateid" class="col-lg-3 control-label">Date</label>
+                                            <div class="col-lg-9">
+                                                <input class="form-control" id="WorkShopDateid" name="WorkShopDate" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" placeholder="Date"
+                                                       ng-model="user.WorkShopDate"
+                                                       ng-required="true">
+                                                <p class="field-validation-error" ng-show="signupform.WorkShopDate.$invalid && signupform.WorkShopDate.$touched " style="color: red">Fill out  Date</p>
+                                            </div>
+                                        </div>
+                                       
+                                        
+                                        <div class="form-group">
+                                            <label for="WorkShopTimeId" class="col-lg-3 control-label">Time</label>
+                                            <div class="col-lg-9">
+                                                <input type="text" class="form-control" name="WorkShopTime" id="WorkShopTimeId" placeholder="Time :" list="datalist1"
+                                                       required="">
+                                                <datalist id="datalist1">
+                                                    <option>10 am</option>
+                                                    <option>11 am</option>
+                                                    <option>12 pm</option>
+                                                    <option>3 pm</option>
+                                                    <option>4 pm</option>
+                                                    <option>5 pm</option>
+                                                    <option>6 pm</option>
+                                                    <option>7 pm</option>
+                                                    <option>8 pm</option>
+                                                    
+                                                    
+
+                                                </datalist>
+                                                <p class="field-validation-error" ng-show="signupform.WorkShopTime.$invalid && signupform.WorkShopTime.$touched " style="color: red">Fill out  Time</p>
+
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="form-group">
+                                        <br />
+                                        <br />
+                                        <label for="PasswordId" class="col-lg-3 control-label"></label>
+                                        <div class="col-lg-7">
+                                            <br />
+                                            <button type="submit" class="btn btn-success btn-block">Save</button>
+                                            <button type="button" class="btn btn-danger btn-block">Cancel</button>
+                                        </div>
+                                        <label for="PasswordId" class="col-lg-2 control-label"></label>
+
+                                    </div>
+                                </form>
+
+                            }
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="col-lg-3"></div>
+        </div>
+
+    </fieldset>
+</body>
+</html>
+

@@ -1,0 +1,142 @@
+﻿
+@{
+    ViewBag.Title = "UpdateVolunteerLocation";
+    Layout = "~/Views/Shared/_VolunteerLayoutPage.cshtml";
+
+}
+
+<h2>UpdateVolunteerLocation</h2>
+
+
+<html>
+<head>
+    <title></title>
+    <script src="~/Scripts/Angular JS/Angular.js"></script>
+    <link href="~/Content/Flatly.css" rel="stylesheet" />
+    <script src="~/Scripts/Angular JS/FromValidation.js"></script>
+    <script src="~/Scripts/jquery-3.3.1.js"></script>
+
+</head>
+
+<body ng-app="validationmodule" ng-controller="FormController">
+
+
+
+    <fieldset>
+        <div class="col-lg-3"></div>
+        <div class="col-lg-6">
+
+            <h2>Request Form</h2>
+
+            <br />
+            @using (Html.BeginForm("UpdateVolunteerLocation", "Volunteer", FormMethod.Post, new { name = "signupform" }))
+            {
+                <form name="signupform">
+
+                    <div class="col-lg-8 col-lg-offset-4">
+                        <br />
+                        <button type="button" onclick="getLocation()" class="btn btn-info">Get Location</button>
+
+                    </div>
+                    <div class="form-group">
+                        <label for="LocationId" class="col-lg-4 control-label">Actual Location</label>
+                        <div class="col-lg-8">
+                            <input type="text" name="Location" class="form-control" id="LocationId" placeholder=" Actual Location ">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="OptionalId" class="col-lg-4 control-label">Area</label>
+                        <div class="col-lg-8">
+                            <input type="text" class="form-control" name="OptionalLocation" id="OptionalId" placeholder="Area :" list="datalist1" required="">
+                            <datalist id="datalist1">
+                                <option>Bashundhara</option>
+                                <option>Mirpur 10</option>
+                                <option>Mirpur 1</option>
+                                <option>Mirpur 2</option>
+                                <option>Mirpur 12</option>
+                                <option>Mirpur 11</option>
+                                <option>Mirpur 6</option>
+                                <option>Banani </option>
+                                <option>Gulshan 1 </option>
+                                <option>Gulshan 2 </option>
+                                <option>Mohakhali </option>
+                                <option>Bangla Motor </option>
+                                <option>Farmgate </option>
+                                <option>Sahbag </option>
+                                <option>Kuratoli</option>
+                                <option>Badda</option>
+                                <option>Rampura</option>
+                                <option>Gabtoli</option>
+                                <option>Gulisthan</option>
+
+                            </datalist>
+
+
+                        </div>
+                    </div>
+
+              
+
+
+
+                    <div class="form-group">
+                        <br />
+                        <div class="col-lg-8 col-lg-offset-4">
+                            <br />
+                            <button type="submit" id="btn" class="btn btn-primary">Save</button>
+                            <button type="button" class="btn btn-danger">Cancel</button>
+
+                        </div>
+                    </div>
+                </form>
+
+            }
+        </div>
+        <div class="col-lg-3"></div>
+
+
+    </fieldset>
+
+
+    <script>
+    var x = document.getElementById('LocationId');
+
+    function getLocation() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition);
+
+        } else {
+            x.value = "Browser not Supporting";
+
+        }
+
+        function showPosition(position) {
+            // x.innerHTML = "latitude =" + position.coords.latitude;
+            // x.innerHTML += "<br/>"
+            // x.innerHTML += "longitude =" + position.coords.longitude;
+
+            var locAPI = " https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyB3HnsGVvGN7d6aEgIMwLMBEIwhyRI8pf4&latlng=" + position.coords.latitude + "," + position.coords.longitude + "&sensor=true";
+            // x.innerHTML = locAPI;
+            $.get({
+                url: locAPI,
+                success: function(data) {
+                    console.log(data);
+                    x.value = data.results[0].address_components[0].long_name;
+                    x.value += " , ";
+                    x.value = data.results[2].address_components[0].long_name;
+                    x.value += " , ";
+                    x.value += data.results[1].address_components[1].long_name;
+                    x.value += " , ";
+                    x.value += data.results[0].address_components[1].long_name;
+                    x.value += " , ";
+                    x.value += data.results[0].address_components[2].long_name;
+
+                }
+            });
+        }
+    }
+    </script>
+</body>
+</html>
+

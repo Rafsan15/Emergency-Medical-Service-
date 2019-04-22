@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width">
+    <title>@ViewBag.Title - Emergency Service System</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="@Url.Action("VolunteerDoctorActivities", "VolunteerDoctor")">DashBoard</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
+
+            <ul class="nav navbar-nav ">
+                   
+                <li>@Html.ActionLink("Previous Activities", "PreviousActivitiesDoctor", "VolunteerDoctor")</li>
+                <li>@Html.ActionLink("Update Location", "UpdateVolunteerLocation", "VolunteerDoctor")</li>
+                <li>@Html.ActionLink("Work Shop", "WorkShopInformation", "WorkShop")</li>
+
+
+
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+
+                <li>
+                    <a href="@Url.Action("Logout", "LogIn")" class="btn btn-primary btn-lg btn-block" value="Finish">
+                        Logout
+                    </a>
+                </li>
+
+
+            </ul>
+        </div>
+    </div>
+
+</nav>
+
+<div class="container body-content">
+    <hr />
+
+    @RenderBody()
+    <hr />
+    <footer>
+        <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+    </footer>
+</div>
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+@RenderSection("scripts", required: false)
+</body>
+</html>

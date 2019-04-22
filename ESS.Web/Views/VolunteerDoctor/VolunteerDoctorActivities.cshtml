@@ -1,0 +1,78 @@
+﻿@using System.ComponentModel.Design.Serialization
+@using System.Threading
+@model List<ESS.Core.Entity.RequestForService>
+
+@{
+    if (ViewBag.Entry.Equals("Admin"))
+    {
+        Layout = "~/Views/Shared/_AdminLayoutPage.cshtml";
+    }
+    else if (ViewBag.Entry.Equals("Employee"))
+    {
+        Layout = "~/Views/Shared/_EmployeeLayoutPage.cshtml";
+    }
+    else
+    {
+        Layout = "~/Views/Shared/_VolunteerDoctorLayoutPage.cshtml";
+    }
+    ViewBag.Title = "VolunteerDoctorActivities";
+}
+
+@if (ViewBag.notification)
+{
+    <div class="alert alert-dismissible alert-info">
+        <a href="@Url.Action("CloseNotification", "Volunteer")" type="button" style="color: red" class="close" data-dismiss="alert">&times;</a>
+        <strong>Heads up!</strong> You <a href="@Url.Action("VolunteerDoctorActivities", "VolunteerDoctor")" class="alert-link">got @ViewBag.notificationCount new Notification </a>, Have a Look.
+    </div>
+}
+<head>
+    <title></title>
+    <link href="~/Content/Flatly.css" rel="stylesheet" />
+</head>
+<body>
+    <h1> My Activities </h1>
+    <br />
+    <br />
+
+
+    <table class="table table-striped table-hover ">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Location</th>
+                <th>Phone</th>
+                <th>Request Time</th>
+                <th>Description</th>
+                <th>Finish</th>
+
+
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var p in Model.ToArray())
+            {
+                <tr class="info">
+                    <td>@p.RequestId</td>
+                    <td>@p.Name</td>
+                    <td>@p.Location</td>
+                    <td>@p.Phone</td>
+                    <td>@p.RequesTime</td>
+                    <td>@p.Description</td>
+                    <td>
+                        <a href="@Url.Action("FinishRequestDoctor", "VolunteerDoctor")/?id=@p.RequestId" class="btn btn-danger" value="Finish" type="button">
+                            Finish
+                        </a>
+                    </td>
+
+
+
+                </tr>
+            }
+
+
+
+        </tbody>
+    </table>
+</body>

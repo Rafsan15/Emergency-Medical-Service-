@@ -1,0 +1,77 @@
+﻿@model ESS.Web.ViewModel.WorkShopViewModel
+
+@{
+    ViewBag.Title = "WorkShopInformation";
+    if (ViewBag.Entry.Equals("Volunteer"))
+    {
+        Layout = "~/Views/Shared/_VolunteerLayoutPage.cshtml";
+    }
+    else if (ViewBag.Entry.Equals("Doctor"))
+    {
+        Layout = "~/Views/Shared/_VolunteerDoctorLayoutPage.cshtml";
+    }
+}
+
+
+<head>
+    <title></title>
+    <link href="~/Content/Flatly.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+</head>
+<body>
+
+
+
+    <br />
+    <div class="container">
+        <h2>WorkShopDetails</h2>
+        @for(int i=0; i<Model.workShops.Count;i++)
+        {
+        <div class="col-lg-8">
+            <div class="well">
+               
+                    <label class="" style="font-size: 25px">Id :@Model.workShops[i].WorkShopId </label>
+
+                    <br/>
+                    <label class="" style="font-size: 25px">Name : @Model.workShops[i].Name </label>
+                    <br/>
+                    <label class="" style="font-size: 25px">Venue : @Model.workShops[i].Venue </label>
+                    <br/>
+                    <label class="" style="font-size: 25px">Details : @Model.workShops[i].Details </label>
+                    <br/>
+                    <label class="" style="font-size: 25px">Phone Number : @Model.workShops[i].Phone </label>
+                    <br/>
+                    <label class="" style="font-size: 25px">Date : @Model.workShops[i].WorkShopDate.ToString().Substring(0, 11) </label>
+                    <br/>
+                    <label class="" style="font-size: 25px">Time : @Model.workShops[i].WorkShopTime </label>
+                    <br/>
+               
+               
+                <br/>
+                <br/>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            @if (Model.IsGoing[i].Equals("false"))
+            {
+                <a href="@Url.Action("Going", "WorkShop")/?id=@Model.Id[i]" class="btn btn-primary btn-lg btn-block">Going</a>
+                <a href="@Url.Action("NotGoing", "WorkShop")/?id=@Model.Id[i]" class="btn btn-danger btn-lg btn-block">Not Going</a>
+            }
+            else
+            {
+                <a href="@Url.Action("FinishWorkShop", "WorkShop")/?id=@Model.Id[i]" class="btn btn-danger btn-lg btn-block">Finish</a>
+
+            }
+           
+
+        </div>
+                }
+    </div>
+    <br />
+  
+
+   
+
+
+</body>
+

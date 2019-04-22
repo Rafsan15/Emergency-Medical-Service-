@@ -1,0 +1,164 @@
+﻿@using App.Framework
+@model ESS.Web.ViewModel.ListViewModel
+
+@{
+    ViewBag.Title = "WorkShopDetails";
+    Layout = "~/Views/Shared/_AdminLayoutPage.cshtml";
+}
+
+
+<head>
+    <title></title>
+    <link href="~/Content/Flatly.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+</head>
+<body>
+    
+
+    
+    <br />
+    <div class="container">
+        <h2>WorkShopDetails</h2>
+        <div class="col-lg-8">
+            <div class="well">
+                <label class="" style="font-size: 25px">Id :@Model.WorkShop.WorkShopId </label>
+
+                <br />
+                <label class="" style="font-size: 25px">Name : @Model.WorkShop.Name </label>
+                <br />
+                <label class="" style="font-size: 25px">Venue : @Model.WorkShop.Venue </label>
+                <br />
+                <label class="" style="font-size: 25px">Details : @Model.WorkShop.Details </label>
+                <br />
+                <label class="" style="font-size: 25px">Phone Number : @Model.WorkShop.Phone </label>
+                <br />
+                <label class="" style="font-size: 25px">Date : @Model.WorkShop.WorkShopDate.ToString().Substring(0, 11) </label>
+                <br />
+                <label class="" style="font-size: 25px">Time : @Model.WorkShop.WorkShopTime </label>
+                <br />
+                <br />
+                <br />
+            </div>
+        </div>
+          <div class="col-lg-4">
+           
+                <a href="@Url.Action("MembersComing", "WorkShop")/?workShopId=@Model.WorkShop.WorkShopId" class="btn btn-primary btn-lg btn-block">All Going Members</a>
+           
+
+        </div>
+
+    </div>
+    <br />
+<div class="container">
+    <div class="col-lg-6">
+        <button onclick="display()" id="vid"class="btn btn-primary btn-lg btn-block">Volunteer</button>
+    </div>
+    <div class="col-lg-6">
+        <button onclick="display2()" id="did"class="btn btn-primary btn-lg btn-block">Doctor</button>
+    </div>
+    <br/>   
+    <br/>   
+    <br/>   
+    <br/>   
+    <table id="div1"class="table table-striped table-hover ">
+    </table>
+
+  
+    <div >
+        <table id="volunteer" class="table table-striped table-hover ">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Address</th>
+                    <th>Job</th>
+                    <th>Assign Volunteer</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var p in Model.UserVolunteerViewModels)
+                {
+                    <tr class="info">
+                        <td>@p.UserId</td>
+                        <td>@p.Name</td>
+                        <td>@p.Email</td>
+                        <td>@p.Phone</td>
+                        <td>@p.CurrentLocation</td>
+                        <td>@p.JobDetails</td>
+                        <td>
+                            <a href="@Url.Action("WorkShopAssign", "WorkShop")/?workShopId=@Model.WorkShop.WorkShopId&userId=@p.UserId&track=1" class="btn btn-success" value="Update" type="button">
+                                Assign
+                            </a>
+                        </td>
+                    </tr>
+                }
+
+
+
+            </tbody>
+        </table>
+    </div>
+   
+    <div >
+        <table id="doctor"class="table table-striped table-hover ">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Address</th>
+                <th>Special Domain</th>
+                <th>Assign Volunteer</th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach (var p in Model.UserDoctorViewModel)
+            {
+                <tr class="info">
+                    <td>@p.UserId</td>
+                    <td>@p.Name</td>
+                    <td>@p.Email</td>
+                    <td>@p.Phone</td>
+                    <td>@p.CurrentLocation</td>
+                    <td>@p.SpecialDomain</td>
+                    <td>
+                        <a href="@Url.Action("WorkShopAssign", "WorkShop")/?workShopId=@Model.WorkShop.WorkShopId&userId=@p.UserId&track=2" class="btn btn-success" value="Update" type="button">
+                            Assign
+                        </a>
+                    </td>
+                </tr>
+            }
+
+
+
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+<script>
+    $(document).ready(function(){
+        document.getElementById("volunteer").style.visibility = "hidden";
+        document.getElementById("doctor").style.visibility = "hidden";
+        });
+   
+</script>
+
+<script>
+    function display() {
+        document.getElementById("div1").innerHTML = document.getElementById("volunteer").innerHTML;
+    }
+</script>
+<script>
+    function display2() {
+        document.getElementById("div1").innerHTML = document.getElementById("doctor").innerHTML;
+
+    }
+</script>
+    
+
+</body>

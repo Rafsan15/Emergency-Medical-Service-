@@ -1,0 +1,59 @@
+﻿@model List<ESS.Core.Entity.RequestForService>
+@{
+    if (ViewBag.Entry.Equals("Admin"))
+    {
+        Layout = "~/Views/Shared/_AdminLayoutPage.cshtml";
+    }
+    else if (ViewBag.Entry.Equals("Employee"))
+    {
+        Layout = "~/Views/Shared/_EmployeeLayoutPage.cshtml";
+    }
+    ViewBag.Title = "GetAllWorkingRequest";
+}
+<head>
+    <title></title>
+    <link href="~/Content/Flatly.css" rel="stylesheet" />
+</head>
+<body>
+<h1>Request List</h1>
+<br />
+<br />
+
+
+<table class="table table-striped table-hover ">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Location</th>
+        <th>Optional Location</th>
+        <th>Phone</th>
+        <th>Request Time</th>
+        <th>Description</th>
+        <th>Details</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var p in Model.ToArray())
+    {
+        <tr class="info">
+            <td>@p.RequestId</td>
+            <td>@p.Name</td>
+            <td>@p.Location</td>
+            <td>@p.OptionalLocation</td>
+            <td>@p.Phone</td>
+            <td>@p.RequesTime</td>
+            <td>@p.Description</td>
+            <td>
+                <a href="@Url.Action("RequestDetails", "Request")/?id=@p.RequestId&count=0" class="btn btn-success" value="Assign" type="button">
+                    Assign
+                </a>
+            </td>
+        </tr>
+    }
+
+
+
+    </tbody>
+</table>
+</body>

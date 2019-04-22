@@ -1,0 +1,150 @@
+﻿
+@{
+    ViewBag.Title = "AddEmployee";
+    Layout = "~/Views/Shared/_AdminLayoutPage.cshtml";
+
+}
+
+<html>
+<head>
+    <title></title>
+    <script src="~/Scripts/Angular JS/Angular.js"></script>
+    <link href="~/Content/Flatly.css" rel="stylesheet" />
+    <script src="~/Scripts/Angular JS/FromValidation.js"></script>
+    <script type="text/JavaScript">
+        function timedRefresh(timeoutPeriod) {
+            setTimeout("location.reload(true);", timeoutPeriod);
+        }
+    </script>
+</head>
+
+<body ng-app="validationmodule" ng-controller="FormController"onload="JavaScript:timedRefresh(150000000);">
+
+
+
+
+   
+<fieldset>
+    <div class="container">
+    <div class="col-lg-3"></div>
+    <div class="col-lg-6">
+    <div class="row">
+    <br/>
+    <div class="panel panel-info">
+    <div class="panel-heading">
+        <h1 style="font-size: 30px" class="panel-title" align="center">Employee Form </h1>
+    </div>
+    <div class="panel-body">
+            @using (Html.BeginForm("AddEmployee", "Employee", FormMethod.Post, new { name = "signupform" }))
+            {
+                <form name="signupform">
+                    <input type="hidden" name="UserType" value="Employee" />
+                    <input type="hidden" name="Gender" value="male" />
+
+                    <div class="form-group">
+                        <label for="NameId" class="col-lg-3 control-label">Name</label>
+                        <div class="col-lg-9">
+                            <input type="text" name="Name" class="form-control" id="NameId" placeholder=" Name "
+                                   ng-model="user.Name"
+                                   ng-required="true">
+                            <p class="field-validation-error" ng-show="signupform.Name.$invalid && signupform.Name.$touched "style="color: red">Fill out your Name</p>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="EmailId" class="col-lg-3 control-label">Email</label>
+                        <div class="col-lg-9">
+                            <input type="email" name="Email" class="form-control" id="EmailId" placeholder="Email"
+                                   ng-model="user.Email"
+                                   ng-required="true">
+                            <p class="field-validation-error" ng-show="signupform.Email.$invalid && signupform.Email.$touched "style="color: red">Enter your correct Email</p>
+
+
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+
+                        <label for="PasswordId" class="col-lg-3 control-label">Password</label>
+                        <div class="col-lg-9">
+                            <input type="password" name="Password" class="form-control" id="PasswordId" placeholder="Password"
+                                   ng-model="user.Password"
+                                   ng-required="true"
+                                   ng-minlength="6">
+                            <p class="field-validation-error" ng-show="signupform.Password.$invalid && signupform.Password.$touched "style="color: red">Password should atleast 6 characters long</p>
+
+
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="Addressid" class="col-lg-3 control-label">Address</label>
+                        <div class="col-lg-9">
+                            <input type="text" name="Address" class="form-control" id="Addressid" placeholder="Address"
+                                   ng-model="user.Address"
+                                   ng-required="true">
+                            <p class="field-validation-error" ng-show="signupform.Address.$invalid && signupform.Address.$touched "style="color: red">Fill out your Address</p>
+
+
+                        </div>
+                    </div>
+
+
+
+                    <div class="form-group">
+                        <label for="PhoneId" class="col-lg-3 control-label">Phone Number</label>
+                        <div class="col-lg-9">
+                            <input type="number" name="Phone" class="form-control" id="PhoneId" placeholder="Phone Number"
+                                   ng-model="user.PhoneNumber"
+                                   ng-minlength="11"
+                                   ng-maxlength="11"
+                                   ng-required="true">
+
+                            <p class="field-validation-error" ng-show="signupform.Phone.$invalid && signupform.Phone.$touched "style="color: red">Fill out your Phone Number</p>
+
+                        </div>
+                    </div>
+
+        
+
+                    <div class="form-group">
+                        <label for="DesignationId" class="col-lg-3 control-label">Designation</label>
+                        <div class="col-lg-9">
+                            <input type="text" name="Designation" class="form-control" id="DesignationId" placeholder="Designation"
+                                   ng-model="user.Designation"
+                                   ng-required="true">
+
+                            <p class="field-validation-error" ng-show="signupform.Designation.$invalid && signupform.Designation.$touched "style="color: red">Fill out your Designation</p>
+
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <br />
+                        <div class="col-lg-9 col-lg-offset-3">
+                            <br />
+                            <button type="submit" class="btn btn-primary">Save</button>
+                            <button type="button" class="btn btn-danger">Cancel</button>
+
+                        </div>
+                    </div>
+                </form>
+
+            }
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+        <div class="col-lg-3"></div>
+    </div>
+
+</fieldset>
+</body>
+</html>
+
+
+
+

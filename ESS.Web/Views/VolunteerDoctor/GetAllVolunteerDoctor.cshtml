@@ -1,0 +1,70 @@
+﻿@model ESS.Web.ViewModel.ListViewModel
+@{
+    if (ViewBag.Entry.Equals("Admin"))
+    {
+        Layout = "~/Views/Shared/_AdminLayoutPage.cshtml";
+    }
+    else if (ViewBag.Entry.Equals("Employee"))
+    {
+        Layout = "~/Views/Shared/_EmployeeLayoutPage.cshtml";
+    }
+    ViewBag.Title = "GetAllVolunteerDoctor";
+}
+<head>
+    <title></title>
+    <link href="~/Content/Flatly.css" rel="stylesheet" />
+</head>
+<body>
+    <h1>Doctor List</h1>
+    <br />
+    <br />
+
+
+    <table class="table table-striped table-hover ">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Current Location</th>
+
+                <th>Special Domain</th>
+                <th>Is Active</th>
+                <th>Update</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var p in Model.UserDoctorViewModel)
+            {
+                <tr class="info">
+                    <td>@p.UserId</td>
+                    <td>@p.Name</td>
+                    <td>@p.Email</td>
+                    <td>@p.Phone</td>
+                    <td>@p.Area</td>
+
+                    <td>@p.SpecialDomain</td>
+                    @if (p.IsActive.Equals("true"))
+                    {
+                        <td>Active</td>
+
+                    }
+                    else
+                    {
+                        <td>Not Active</td>
+
+                    }
+                    <td>
+                        <a href="@Url.Action("VolunteerDoctorDetails", "VolunteerDoctor")/@p.UserId" class="btn btn-danger" value="Update" type="button">
+                            Update
+                        </a>
+                    </td>
+                </tr>
+            }
+
+
+
+        </tbody>
+    </table>
+</body>

@@ -1,0 +1,180 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{EFD412E8-CDF0-4693-8533-CFE0C3937518}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ESS.Infrastructure</RootNamespace>
+    <AssemblyName>ESS.Infrastructure</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ESSDbContext.cs" />
+    <Compile Include="Migrations\201811251255397_initial.cs" />
+    <Compile Include="Migrations\201811251255397_initial.Designer.cs">
+      <DependentUpon>201811251255397_initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811251439272_requestOptionalLoc.cs" />
+    <Compile Include="Migrations\201811251439272_requestOptionalLoc.Designer.cs">
+      <DependentUpon>201811251439272_requestOptionalLoc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811251613376_VolunteerLocation.cs" />
+    <Compile Include="Migrations\201811251613376_VolunteerLocation.Designer.cs">
+      <DependentUpon>201811251613376_VolunteerLocation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811252043241_VolunteerDone.cs" />
+    <Compile Include="Migrations\201811252043241_VolunteerDone.Designer.cs">
+      <DependentUpon>201811252043241_VolunteerDone.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811252101497_Notification.cs" />
+    <Compile Include="Migrations\201811252101497_Notification.Designer.cs">
+      <DependentUpon>201811252101497_Notification.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811252137275_NotificationUpdate1.cs" />
+    <Compile Include="Migrations\201811252137275_NotificationUpdate1.Designer.cs">
+      <DependentUpon>201811252137275_NotificationUpdate1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811261421030_Workshop.cs" />
+    <Compile Include="Migrations\201811261421030_Workshop.Designer.cs">
+      <DependentUpon>201811261421030_Workshop.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811261444275_WorkshopTime.cs" />
+    <Compile Include="Migrations\201811261444275_WorkshopTime.Designer.cs">
+      <DependentUpon>201811261444275_WorkshopTime.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811261445235_WorkshopDate.cs" />
+    <Compile Include="Migrations\201811261445235_WorkshopDate.Designer.cs">
+      <DependentUpon>201811261445235_WorkshopDate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811261652049_AssignworkShop.cs" />
+    <Compile Include="Migrations\201811261652049_AssignworkShop.Designer.cs">
+      <DependentUpon>201811261652049_AssignworkShop.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811261704329_AssignworkShopUserid.cs" />
+    <Compile Include="Migrations\201811261704329_AssignworkShopUserid.Designer.cs">
+      <DependentUpon>201811261704329_AssignworkShopUserid.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811261743440_workShopUserisActive.cs" />
+    <Compile Include="Migrations\201811261743440_workShopUserisActive.Designer.cs">
+      <DependentUpon>201811261743440_workShopUserisActive.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811261757024_workShopUserisgoing.cs" />
+    <Compile Include="Migrations\201811261757024_workShopUserisgoing.Designer.cs">
+      <DependentUpon>201811261757024_workShopUserisgoing.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811262056053_vol.cs" />
+    <Compile Include="Migrations\201811262056053_vol.Designer.cs">
+      <DependentUpon>201811262056053_vol.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811262134529_userGender.cs" />
+    <Compile Include="Migrations\201811262134529_userGender.Designer.cs">
+      <DependentUpon>201811262134529_userGender.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811270928143_counttable.cs" />
+    <Compile Include="Migrations\201811270928143_counttable.Designer.cs">
+      <DependentUpon>201811270928143_counttable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ESS.Core.Entity\ESS.Core.Entity.csproj">
+      <Project>{91767afc-73fc-4ab9-a67c-ffe41044d67e}</Project>
+      <Name>ESS.Core.Entity</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201811251255397_initial.resx">
+      <DependentUpon>201811251255397_initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811251439272_requestOptionalLoc.resx">
+      <DependentUpon>201811251439272_requestOptionalLoc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811251613376_VolunteerLocation.resx">
+      <DependentUpon>201811251613376_VolunteerLocation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811252043241_VolunteerDone.resx">
+      <DependentUpon>201811252043241_VolunteerDone.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811252101497_Notification.resx">
+      <DependentUpon>201811252101497_Notification.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811252137275_NotificationUpdate1.resx">
+      <DependentUpon>201811252137275_NotificationUpdate1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811261421030_Workshop.resx">
+      <DependentUpon>201811261421030_Workshop.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811261444275_WorkshopTime.resx">
+      <DependentUpon>201811261444275_WorkshopTime.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811261445235_WorkshopDate.resx">
+      <DependentUpon>201811261445235_WorkshopDate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811261652049_AssignworkShop.resx">
+      <DependentUpon>201811261652049_AssignworkShop.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811261704329_AssignworkShopUserid.resx">
+      <DependentUpon>201811261704329_AssignworkShopUserid.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811261743440_workShopUserisActive.resx">
+      <DependentUpon>201811261743440_workShopUserisActive.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811261757024_workShopUserisgoing.resx">
+      <DependentUpon>201811261757024_workShopUserisgoing.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811262056053_vol.resx">
+      <DependentUpon>201811262056053_vol.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811262134529_userGender.resx">
+      <DependentUpon>201811262134529_userGender.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811270928143_counttable.resx">
+      <DependentUpon>201811270928143_counttable.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

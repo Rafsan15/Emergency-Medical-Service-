@@ -1,0 +1,132 @@
+﻿@using System.Diagnostics.Eventing.Reader
+@model ESS.Web.ViewModel.SignUpViewModel
+@{
+                /**/
+
+                ViewBag.Title = "EmployeeDetails";
+                Layout = "~/Views/Shared/_AdminLayoutPage.cshtml";
+
+}
+
+
+<html>
+<head>
+    <title></title>
+    <script src="~/Scripts/Angular JS/Angular.js"></script>
+    <link href="~/Content/Flatly.css" rel="stylesheet" />
+    <script src="~/Scripts/Angular JS/FromValidation.js"></script>
+</head>
+
+<body ng-app="validationmodule" ng-controller="FormController"onload="JavaScript:timedRefresh(150000000);">
+
+
+
+    <fieldset>
+        <div class="container">
+            <div class="col-lg-3"></div>
+            <div class="col-lg-6">
+                <div class="row">
+                    <br />
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            <h1 style="font-size: 30px" class="panel-title" align="center">Employee Details </h1>
+                        </div>
+                        <div class="panel-body">
+                            @using (Html.BeginForm("UpdateEmployee", "Employee", FormMethod.Post, new { name = "signupform" }))
+                            {
+                                <form name="signupform">
+                                    <input type="hidden" name="UserType" value="Employee" />
+                                    <input type="hidden" name="UserId" value="@Model.UserId" />
+                                    <input type="hidden" name="DOB" value="@Model.DOB" />
+
+                                    <div class="form-group">
+                                        <label for="NameId" class="col-lg-3 control-label">Name</label>
+                                        <div class="col-lg-9">
+                                            <input type="text" name="Name" class="form-control" id="NameId" value="@Model.Name" placeholder=" Name " required="" />
+
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="EmailId" class="col-lg-3 control-label">Email</label>
+                                        <div class="col-lg-9">
+                                            <input type="email" name="Email" class="form-control" value="@Model.Email" id="EmailId" placeholder="Email" required="">
+
+
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+
+                                        <label for="PasswordId" class="col-lg-3 control-label">Password</label>
+                                        <div class="col-lg-9">
+                                            <input type="text" name="Password" class="form-control" value="@Model.Password" id="PasswordId" placeholder="Password" required="">
+
+
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="Addressid" class="col-lg-3 control-label">Address</label>
+                                        <div class="col-lg-9">
+                                            <input type="text" name="Address" class="form-control" value="@Model.Address" id="Addressid" placeholder="Address" required="">
+
+
+                                        </div>
+                                    </div>
+
+
+
+                                    <div class="form-group">
+                                        <label for="PhoneId" class="col-lg-3 control-label">Phone Number</label>
+                                        <div class="col-lg-9">
+                                            <input type="number" name="Phone" class="form-control" value="@Model.Phone" id="PhoneId" placeholder="Phone Number" required="">
+
+
+                                        </div>
+                                    </div>
+
+
+
+                                    <div class="form-group">
+                                        <label for="DesignationId" class="col-lg-3 control-label">Designation</label>
+                                        <div class="col-lg-9">
+                                            <input type="text" name="Designation" class="form-control" value="@Model.Designation" id="DesignationId" placeholder="Designation" required="">
+
+
+                                        </div>
+                                    </div>
+
+
+                                    <div class="form-group">
+                                        <br />
+                                        <div class="col-lg-9 col-lg-offset-3">
+                                            <br />
+                                            <button type="submit" class="btn btn-primary">Update</button>
+                                            <a href="@Url.Action("DeleteEmployee", "Employee")/@Model.UserId" class="btn btn-danger" value="Delete" type="submit">
+                                                Delete
+                                            </a>
+
+                                        </div>
+                                    </div>
+                                </form>
+
+                            }
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="col-lg-3"></div>
+        </div>
+
+    </fieldset>
+</body>
+</html>
+
+
+
+
+
+

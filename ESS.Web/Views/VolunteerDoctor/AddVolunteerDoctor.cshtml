@@ -1,0 +1,158 @@
+﻿
+@{
+    if (ViewBag.Entry.Equals("Admin"))
+    {
+        Layout = "~/Views/Shared/_AdminLayoutPage.cshtml";
+    }
+    else if(ViewBag.Entry.Equals("Employee"))
+    {
+        Layout = "~/Views/Shared/_EmployeeLayoutPage.cshtml";
+    }
+
+    ViewBag.Title = "AddVolunteerDoctor";
+}
+
+<html>
+<head>
+    <title></title>
+    <script src="~/Scripts/Angular JS/Angular.js"></script>
+    <link href="~/Content/Flatly.css" rel="stylesheet" />
+    <script src="~/Scripts/Angular JS/FromValidation.js"></script>
+</head>
+
+<body ng-app="validationmodule" ng-controller="FormController">
+
+
+
+<fieldset>
+    <div class="container">
+    <div class="col-lg-3"></div>
+    <div class="col-lg-6">
+    <div class="row">
+    <br/>
+    <div class="panel panel-info">
+    <div class="panel-heading">
+        <h1 style="font-size: 30px" class="panel-title" align="center">Doctor Form </h1>
+    </div>
+    <div class="panel-body">
+            @using (Html.BeginForm("AddVolunteerDoctor", "VolunteerDoctor", FormMethod.Post, new { name = "signupform" }))
+            {
+                <input type="hidden" name="UserType" value="Doctor" />
+                <input type="hidden" name="Gender" value="male" />
+
+                <div class="form-group">
+                    <label for="NameId" class="col-lg-9 col-lg-offset-3 control-label">Name</label>
+                    <div class="col-lg-9 col-lg-offset-3">
+                        <input type="text" ng-model="Name" name="Name" class="form-control" id="NameId" placeholder=" Name " required 
+                        />
+                        <div ng-show="signupform.Name.$invalid && signupform.Email.$touched">
+                            <span ng-show="signupform.Name.$error.required" style="color: red">The field Your name is required</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="EmailId" class="col-lg-9 col-lg-offset-3 control-label">Email</label>
+                    <div class="col-lg-9 col-lg-offset-3">
+                        <input type="email" name="Email" class="form-control" id="EmailId" placeholder="Email"
+                               ng-model="user.Email"
+                               ng-required="true">
+                        <p class="field-validation-error" ng-show="signupform.Email.$invalid && signupform.Email.$touched " style="color: red">Enter your correct Email</p>
+
+
+                    </div>
+                </div>
+
+                <div class="form-group">
+
+                    <label for="PasswordId" class="col-lg-9 col-lg-offset-3 control-label">Password</label>
+                    <div class="col-lg-9 col-lg-offset-3">
+                        <input type="password" name="Password" class="form-control" id="PasswordId" placeholder="Password"
+                               ng-model="user.Password"
+                               ng-required="true"
+                               ng-minlength="6">
+                        <p class="field-validation-error" ng-show="signupform.Password.$invalid && signupform.Password.$touched " style="color: red">Password should atleast 6 characters long</p>
+
+
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="Addressid" class="col-lg-9 col-lg-offset-3 control-label">Address</label>
+                    <div class="col-lg-9 col-lg-offset-3">
+                        <input type="text" name="Address" class="form-control" id="Addressid" placeholder="Address"
+                               ng-model="user.Address"
+                               ng-required="true">
+                        <p class="field-validation-error" ng-show="signupform.Address.$invalid && signupform.Address.$touched " style="color: red">Fill out your Address</p>
+
+
+                    </div>
+                </div>
+
+
+
+                <div class="form-group">
+                    <label for="PhoneId" class="col-lg-9 col-lg-offset-3 control-label">Phone Number</label>
+                    <div class="col-lg-9 col-lg-offset-3">
+                        <input type="number" name="Phone" class="form-control" id="PhoneId" placeholder="Phone Number"
+                               ng-model="user.PhoneNumber"
+                               ng-minlength="11"
+                               ng-maxlength="11"
+                               ng-required="true">
+
+                        <p class="field-validation-error" ng-show="signupform.Phone.$invalid && signupform.Phone.$touched " style="color: red">Fill out your Correct Phone Number</p>
+
+                    </div>
+                </div>
+
+          
+
+                <div class="form-group">
+                    <label for="SpecialDomainId" class="col-lg-9 col-lg-offset-3 control-label">Special Domain </label>
+                    <div class="col-lg-9 col-lg-offset-3">
+                        <input type="text" name="SpecialDomain" class="form-control" id="SpecialDomainId" placeholder="Special Domain"
+                               ng-model="user.SpecialDomain"
+                               ng-required="true">
+
+                        <p class="field-validation-error" ng-show="signupform.SpecialDomain.$invalid && signupform.SpecialDomain.$touched " style="color: red">Fill out your Special Domain</p>
+
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label for="HospitalNameId" class="col-lg-9 col-lg-offset-3 control-label">Hospital Name </label>
+                    <div class="col-lg-9 col-lg-offset-3">
+                        <input type="text" name="HospitalName" class="form-control" id="HospitalNameId" placeholder="Hospital Name" />
+
+
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <br />
+                    <div class="col-lg-9 col-lg-offset-3">
+                        <br />
+                        <button type="submit" class="btn btn-primary">Save</button>
+                        <button type="button" class="btn btn-danger">Cancel</button>
+
+                    </div>
+                </div>
+
+            }
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+        <div class="col-lg-3"></div>
+    </div></fieldset>
+</body>
+</html>
+
+
+
+
+

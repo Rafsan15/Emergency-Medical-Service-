@@ -1,0 +1,68 @@
+﻿@model ESS.Web.ViewModel.ListViewModel
+@{
+    if (ViewBag.Entry.Equals("Admin"))
+    {
+        Layout = "~/Views/Shared/_AdminLayoutPage.cshtml";
+    }
+    else if (ViewBag.Entry.Equals("Employee"))
+    {
+        Layout = "~/Views/Shared/_EmployeeLayoutPage.cshtml";
+    }
+    ViewBag.Title = "GetAllVolunteerRequest";
+}
+<head>
+    <title></title>
+    <link href="~/Content/Flatly.css" rel="stylesheet" />
+</head>
+<body>
+<h1>Volunteer Request List</h1>
+<br/>
+<br/>
+
+
+<table class="table table-striped table-hover ">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Address</th>
+        <th>Gender</th>
+        <th>Job Details</th>
+        <th>Approve</th>
+        <th>Discard</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var p in Model.UserVolunteerViewModels)
+    {
+        <tr class="info">
+            <td>@p.UserId</td>
+            <td>@p.Name</td>
+            <td>@p.Email</td>
+            <td>@p.Phone</td>
+            <td>@p.Address</td>
+            <td>@p.Gender</td>
+            <td>@p.JobDetails</td>
+
+            <td>
+                <a href="@Url.Action("ApproveVolunteer", "Volunteer")/@p.UserId" class="btn btn-success" value="Approve" type="button">
+                    Approve
+                </a>
+
+            </td>
+            <td>
+                <a href="@Url.Action("DeleteVolunteer", "Volunteer")/@p.UserId" class="btn btn-danger" value="Discard" type="button">
+                    Discard
+                </a>
+
+            </td>
+        </tr>
+    }
+        
+        
+        
+    </tbody>
+</table>
+</body>

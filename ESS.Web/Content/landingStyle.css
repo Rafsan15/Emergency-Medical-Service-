@@ -1,0 +1,19 @@
+body,
+html {
+  margin: 0;
+  padding: 0;
+}
+#home-section {
+  background: url(/html/homeBg.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  min-height: 600px;
+}
+#home-section .dark-overlay {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  min-height: 600px;
+  background: rgba(0, 0, 0, 0.7);
+}

@@ -1,0 +1,61 @@
+﻿@{
+    ViewBag.Title = "AddVolunteer";
+    Layout = "~/Views/Shared/_LandingPageLayoutPage.cshtml";
+
+}
+
+<h2>GoogleMap</h2>
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="~/Content/Flatly.css" rel="stylesheet" />
+
+    <script src="~/Scripts/jquery-3.3.1.js"></script>
+</head>
+<body>
+    <div id="">
+        <button onclick="getLocation()">Get Location</button>
+
+        <input type="text" id="output" />
+    </div>
+
+    <script>
+        var x = document.getElementById('output');
+
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition);
+
+            } else {
+                x.value = "Browser not Supporting";
+
+            }
+
+            function showPosition(position) {
+                // x.innerHTML = "latitude =" + position.coords.latitude;
+                // x.innerHTML += "<br/>"
+                // x.innerHTML += "longitude =" + position.coords.longitude;
+
+                var locAPI = " https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyB3HnsGVvGN7d6aEgIMwLMBEIwhyRI8pf4&latlng=" + position.coords.latitude + "," + position.coords.longitude + "&sensor=true";
+                // x.innerHTML = locAPI;
+                $.get({
+                    url: locAPI,
+                    success: function (data) {
+                        console.log(data);
+                        x.value = data.results[0].address_components[0].long_name;
+                        x.value += " , ";
+                        x.value = data.results[2].address_components[0].long_name;
+                        x.value += " , ";
+                        x.value += data.results[1].address_components[1].long_name;
+                        x.value += " , ";
+                        x.value += data.results[0].address_components[1].long_name;
+                        x.value += " , ";
+                        x.value += data.results[0].address_components[2].long_name;
+
+                    }
+                });
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+﻿@model Framework.Result<List<ESS.Core.Entity.WorkShop>>
+
+@{
+    ViewBag.Title = "GetAllWorkShop";
+    Layout = "~/Views/Shared/_AdminLayoutPage.cshtml";
+}
+
+<h2>WorkShop List</h2>
+
+<head>
+    <title></title>
+    <link href="~/Content/Flatly.css" rel="stylesheet" />
+</head>
+<body>
+
+    <table class="table table-striped table-hover ">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Venue</th>
+                <th>Details</th>
+                <th>WorkShopDate</th>
+                <th>WorkShopTime</th>
+                <th>Assign</th>
+                <th>Discard</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var p in Model.Data.ToArray())
+            {
+                <tr class="info">
+                    <td>@p.WorkShopId</td>
+                    <td>@p.Name</td>
+                    <td>@p.Venue</td>
+                    <td>@p.Details</td>
+                    <td>@p.WorkShopDate.ToString().Substring(0,11)</td>
+                    <td>@p.WorkShopTime</td>
+                    <td>
+                        <a href="@Url.Action("WorkShopDetails", "WorkShop")/?id=@p.WorkShopId" class="btn btn-success" value="Assign" type="button">
+                            Assign
+                        </a>
+                    </td>
+                    <td>
+                        <a href="@Url.Action("DeleteWorkShop", "WorkShop")/?id=@p.WorkShopId" class="btn btn-danger" value="Discard" type="button">
+                            Discard
+                        </a>
+                    </td>
+                </tr>
+            }
+
+
+
+        </tbody>
+    </table>
+</body>
